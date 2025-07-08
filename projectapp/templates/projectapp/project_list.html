@@ -5,5 +5,7 @@
             <a href="{% url 'project_detail' project.pk %}">{{ project.title }}                
             </a> - 평균 점수: {{project.average_score|floatformat:2}}
         </li>
+    {% empty %}
+        <li>등록된 프로젝트가 없습니다.</li>
     {% endfor %}
 </ul>

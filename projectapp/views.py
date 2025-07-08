@@ -11,6 +11,7 @@ def project_list(request):
 
 def project_detail(request, pk):
     project = get_object_or_404(Project, pk=pk)
+    form = None
     if request.method == 'POST':
         form = VoteForm(request.POST)
         if form.is_valid():
@@ -18,7 +19,7 @@ def project_detail(request, pk):
             project.score_sum += score
             project.score_count += 1
             project.save()
-            return HttpResponseRedirect(reverse('project_detail', args=[pk]))
+            return HttpResponseRedirect(request.path)
         else:
             form = VoteForm()
     return render(request, 'projectapp/project_detail.html', {'project': project, 'form': form})
