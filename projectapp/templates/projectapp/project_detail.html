@@ -1,2 +1,9 @@
 <h1>{{ project.title }}</h1>
 <p>{{ project.description }}</p>
+<p>평균 점수: {{project.average_score|floatformat:2}}<p>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">투표하기</button>
+</form>
