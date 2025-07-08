@@ -1,6 +1,9 @@
 <h1>프로젝트 리스트</h1>
 <ul>
     {% for project in projects %}
-        <li><a href="{% url 'project_detail' project.pk %}">{{ project.title }}</a></li>
+        <li>
+            <a href="{% url 'project_detail' project.pk %}">{{ project.title }}                
+            </a> - 평균 점수: {{project.average_score|floatformat:2}}
+        </li>
     {% endfor %}
 </ul>

@@ -6,7 +6,7 @@ from django.urls import reverse
 
 # Create your views here.
 def project_list(request):
-    projects = Project.objects.all()
+    projects = Project.objects.all().order_by('-score_sum', '-score_count')
     return render(request, 'projectapp/project_list.html', {'projects': projects})
 
 def project_detail(request, pk):
